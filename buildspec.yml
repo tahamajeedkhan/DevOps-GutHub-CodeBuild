@@ -17,8 +17,8 @@ phases:
       - echo Preparing artifacts for deployment...
 artifacts:
   files:
-    - public/**/*       # Include all files from the public folder
+    - public/**/*   
     - index.js
     - package.json
     - package-lock.json
-  discard-paths: no      # Keep the folder structure intact
+  discard-paths: no     

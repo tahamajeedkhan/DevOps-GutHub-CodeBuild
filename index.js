@@ -1,17 +1,32 @@
-const express = require('express');
+// index.js
+
+import express from 'express';
+
 const app = express();
+const port = process.env.PORT || 3000;
 
-// Serve static files from the "public" directory
-app.use(express.static('public'));
+// Set up routes
+app.get('/', (req, res) => {
+    res.send('Welcome to the homepage!');
+});
 
-// Dynamic route example
-app.get('/hello/:name', (req, res) => {
-    const name = req.params.name;
-    res.send(`<h1>Hello, ${name}!</h1>`);
+app.get('/about', (req, res) => {
+    res.send('About Us');
+});
+
+app.get('/contact', (req, res) => {
+    res.send('Contact Us');
+});
+
+// Handle errors
+app.get('/error', (req, res) => {
+    res.status(500).send('Internal Server Error');
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
+
+// Export the app for testing purposes (this works for ESM)
+export default app;
